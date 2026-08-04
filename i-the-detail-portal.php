@@ -2,30 +2,8 @@
 session_start(); // Start the session
 
 // Database connection
-$servername = "server64.web-hosting.com";
-$username = "arwasoyk";
-$password = "http://S0hail-t@riq/";
-$dbname = "arwasoyk_ARWA_TRAVELS";
+require_once 'includes/db.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch currencies from the database
-$sql_currencies = "SELECT currency_code, currency_name FROM currencies";
-$result_currencies = $conn->query($sql_currencies);
-$currencies = [];
-if ($result_currencies) {
-    while ($row = $result_currencies->fetch_assoc()) {
-        $currencies[$row['currency_code']] = $row['currency_name'];
-    }
-} else {
-    echo "<p>Error fetching currencies: " . $conn->error . "</p>";
-}
 // Fetch currencies from the database
 $sql_currencies = "SELECT currency_code, currency_name FROM currencies";
 $result_currencies = $conn->query($sql_currencies);
